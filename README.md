@@ -19,7 +19,7 @@ Real Dataset: [Real](https://drive.google.com/drive/folders/17vhfT93dwcg40JokNJJ
 ## Requirements
 Pytorch==1.6.0 scipy==1.3.0  
 ### Run
-For each sample on simulation data Run Simulation/Self_supervised.py to reconstruct 10 synthetic datasets. 
+For each sample on simulation data Run "Simulation/Self_supervised.py" to reconstruct 10 synthetic datasets. 
 
 
 ## References
