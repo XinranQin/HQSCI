@@ -1,4 +1,3 @@
-from Simulation.models.unet import *
 import torch
 import numpy as np
 import torch.nn as nn
@@ -6,6 +5,27 @@ from torch.nn import init
 import torch.nn.functional as F
 
 
+
+class conv_layer(nn.Module):
+    def __init__(self, in_channels, out_channels, n_file,is_relu=False):
+        super(conv_layer, self).__init__()
+
+        self.is_relu = is_relu
+
+        self.conv = nn.Conv2d(in_channels * n_file, out_channels * n_file, kernel_size=3, stride=1, groups=n_file,
+                              padding=(1, 1))
+        self.lrelu = nn.LeakyReLU()
+        self.relu = nn.ReLU()
+        self.relu6 = nn.ReLU6()
+
+    def forward(self, x):
+
+        x = self.conv(x)
+        if self.is_relu:
+            x = self.relu(x)
+        else:
+            x = self.lrelu(x)
+        return x
 
 
 class Recon(torch.nn.Module):
